@@ -1,0 +1,59 @@
+GAAL:
+  input_dim: 784
+  output_dim: 10
+  latent_dim: 100
+  GAN_epoch: 10
+  query_num: 20
+  AL_epoch: 400
+  batch_size: 32
+  model_path: './model/'
+  model_name: 'model'
+  lambda: 0.9
+
+GAN:
+  generator:
+    linear_layer1:
+      size: 128
+      active_fn: tf.nn.relu
+    linear_layer3:
+      size: 784
+      active_fn: tf.nn.sigmoid
+  
+  discriminator:
+    linear_layer1:
+      size: 512
+      active_fn: tf.nn.relu
+    linear_layer2:
+      size: 256
+      active_fn: tf.nn.relu
+    linear_layer3:
+      size: 1
+      active_fn: null
+
+Classifier:
+  linear_layer1:
+      size: 512
+      active_fn: tf.nn.relu
+  linear_layer2:
+    size: 256
+    active_fn: tf.nn.relu
+  linear_layer3:
+    size: 10
+    active_fn: null
+
+MNIST:
+  select:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+  split:
+    label: 0.0005
+    unlabel: 0.7995
+    test: 0.2
